@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/index.html" },
+      { "source": "/movies", "destination": "/src/movies.html" },
+      { "source": "/tvseries", "destination": "/src/tvSeries.html" },
+      { "source": "/people", "destination": "/src/people.html" },
+      { "source": "/bookmarks", "destination": "/src/bookmarks.html" }
+    ]
+  }

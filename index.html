@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="assets/images/logo (2).ico" type="image/x-icon">
+    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script type="module" src="./src/main.js"></script>
+</head>
+<body>
+    <div class="bg-[#10141e] w-full min-h-[100vh] font-baseFont pb-[4rem]">
+        <div class="grid grid-cols-1 md:grid-cols-[80px_auto] md:gap-[2rem] relative md:px-[1.5rem]"> <!-- //-->
+            <!-- sidebar -->
+            <div class="md:h-[530px] md:pt-[2rem] md:sticky top-0"> <!-- //-->
+                <div class="w-full h-full bg-[#212b46] px-[1rem] md:px-0 md:flex-col md:rounded-xl flex flex-row justify-between items-center py-[2rem]"><!-- //-->
+                    <div class="cursor-pointer home max-sm1:text-[0.8rem]">  <!-- //-->
+                        <i class="fa-solid fa-tape fa-2xl text-red-500"></i>
+                    </div>
+                    
+                    <div class="md:h-[250px] max-sm2:px-[1.3rem] px-[2rem] w-full max-w-[500px] flex flex-row md:flex-col justify-between items-center">
+                        <div class="cursor-pointer main-home max-sm2:text-[0.9rem]"> <!-- //-->
+                            <i class="fa-solid fa-house-chimney fa-lg text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                        <div class="cursor-pointer movie-category max-sm2:text-[0.9rem]"> <!-- //-->
+                            <i class="fa-solid fa-film fa-lg text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                        <div class="cursor-pointer tv-category max-sm2:text-[0.9rem]"> <!-- //-->
+                            <i class="fa-solid fa-tv fa-lg text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                        <div class="cursor-pointer person-category max-sm2:text-[0.9rem]"> <!-- //-->
+                            <i class="fa-solid fa-person fa-xl text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                    </div>
+
+                    <div class="cursor-pointer all-bookmarks max-sm1:text-[0.8rem]"> <!-- //-->
+                        <i class="fa-solid fa-book-bookmark fa-2xl text-red-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- main data -->
+            <div class="max-md:px-[1.5rem]">
+                <div class="pt-[4rem] main-data">
+                    <!-- search bar -->
+                    <div class="flex max-sm:gap-[13px] gap-[20px] items-center">
+                        <i class="fa-solid fa-magnifying-glass fa-xl text-white"></i>
+                        <input type="text" class="w-full caret-red-400 font-[300] outline-none font-baseFont bg-transparent text-white sm:text-[1.5rem] border-b-[1.5px] border-transparent focus:border-white search-inp" placeholder="Search For Movies Or TV Series">
+                        <button class="capitalize text-white font-medium py-[0.4rem] px-[0.7rem] bg-[#5A6A90] rounded-md search-btn">search</button>
+                    </div>
+    
+                    <div class="category-info hidden">
+                        <!-- movies info -->
+                        <div>
+                            <!-- trending -->
+                            <div class="mt-[3rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Trending</h1>
+                                        <div class="text-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">movie</div>
+                                    </div>
+                                    <a href="/src/movies.html?cons-category=trending&base-type=movie&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(380px,1fr))] max-sm1:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] trending-info">
+                                    
+                                </div>
+                            </div>
+    
+                            <!-- popular -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Popular</h1>
+                                        <div class="text-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">movie</div>
+                                    </div>
+                                    <a href="/src/movies.html?cons-category=popular&base-type=movie&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info max-sm:justify-items-center">
+                                    
+                                </div>
+                            </div>
+    
+                            <!-- now playing -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Now Playing</h1>
+                                        <div class="text-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">movie</div>
+                                    </div>
+                                    <a href="/src/movies.html?cons-category=now_playing&base-type=movie&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+                                    
+                                </div>
+                            </div>
+    
+                            <!-- upcoming -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Upcoming</h1>
+                                        <div class="text-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">movie</div>
+                                    </div>
+                                    <a href="/src/movies.html?cons-category=upcoming&base-type=movie&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+                                </div>
+                            </div>
+    
+                            <!-- top rated -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Top Rated</h1>
+                                        <div class="text-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">movie</div>
+                                    </div>
+                                    <a href="/src/movies.html?cons-category=top_rated&base-type=movie&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="w-full my-[2rem] h-[2px] bg-slate-500"></div>
+    
+                        <!-- tv info -->
+                        <div>
+                            <!-- trending -->
+                            <div class="mt-[3rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Trending</h1>
+                                        <div class="bg-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">tv series</div>
+                                    </div>
+                                    <a href="/src/tvSeries.html?cons-category=trending&base-type=tv&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(380px,1fr))] max-sm1:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] trending-info">
+                                    
+                                </div>
+                            </div>
+    
+                            <!-- popular -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Popular</h1>
+                                        <div class="bg-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">tv series</div>
+                                    </div>
+                                    <a href="/src/tvSeries.html?cons-category=popular&base-type=tv&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+                                    
+                                </div>
+                            </div>
+    
+                            <!-- airing today -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Airing Today</h1>
+                                        <div class="bg-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">tv series</div>
+                                    </div>
+                                    <a href="/src/tvSeries.html?cons-category=airing_today&base-type=tv&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+    
+                                </div>
+                            </div>
+    
+                            <!-- on air -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">On The Air</h1>
+                                        <div class="bg-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">tv series</div>
+                                    </div>
+                                    <a href="/src/tvSeries.html?cons-category=on_the_air&base-type=tv&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+                                    
+                                </div>
+                            </div>
+    
+                            <!-- top rated -->
+                            <div class="mt-[4rem]">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex gap-[10px] items-center">
+                                        <h1 class="text-white text-[1.8rem] max-sm1:text-[1.25rem]">Top Rated</h1>
+                                        <div class="bg-white text-[0.7rem] relative sm1:top-[4px] border-[1.5px] border-white rounded-[10px] uppercase px-[8px] py-[2px]">tv series</div>
+                                    </div>
+                                    <a href="/src/tvSeries.html?cons-category=top_rated&base-type=tv&page=1" class="text-[#5A6A90] uppercase text-[0.8rem] sm1:text-[0.9rem] relative sm1:top-[5px] see-more-link">see more</a>
+                                </div>
+    
+                                <div class="mt-[1rem] max-sm:justify-items-center grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] front-info">
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="showcase hidden">
+                        <h1 class="text-[1.8rem] font-[300] text-white mt-[2rem] results-tag"></h1>
+        
+                        <div class="mt-[1rem] grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-x-[1.1rem] gap-y-[2rem] info-cont max-[620px]:justify-items-center"></div>
+    
+                        <div class="mt-[2.5rem] w-fit mx-auto text-[#10141e] flex items-center gap-[4px]">
+                            <button class="py-[6px] max-sm1:text-[0.6rem] bg-white px-[15px] rounded-l-[10px] prev-page"><i class="fa-xl fa-solid fa-arrow-left"></i></button>
+                            <p class="py-[8px] text-[1.2rem] max-sm1:text-[0.9rem] px-[7px] bg-white rounded-[5px]">Page <span class="curr-page font-semibold">-</span> Out Of <span class="total-pages font-semibold">-</span></p>
+                            <button class="py-[6px] max-sm1:text-[0.6rem] bg-white px-[15px] rounded-r-[10px] next-page"><i class="fa-xl fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <template id="trending-temp">
+                    <div class="relative data-temp cursor-pointer hover:scale-[1.02] transition-all duration-500 hover:rotate-[1deg] ease">
+                        <div class="w-full rounded-lg overflow-hidden relative">
+                            <div class=" w-fit text-white absolute z-[10] top-[25px] right-[30px] cursor-pointer my-bookmark">
+                                <i class="fa-regular absolute fa-bookmark fa-xl"></i>
+                                <i class="fa-solid absolute fa-xl"></i>
+                            </div>
+                            <img class="w-full opacity-45 object-cover info-img" src="" alt="">
+                        </div>
+                        <div class="absolute bottom-[0.8rem] left-[0.8rem]">
+                            <div class="text-white flex items-center">
+                                <span class="info-yr"></span>
+                                <div class="flex gap[1px] justify-center items-center">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="2" fill="#d9d9d9"></circle> </g></svg>
+                                    <i class="base-icon fa-solid hover:text-red-500 mr-[8px] transition-all duration-500 ease"></i>
+                                    <span class="info-name"></span>
+                                </div>
+                            </div>
+                            <h1 class="capitalize text-white text-[1.7rem] info-title max-sm1:text-[1.2rem]"></h1>
+                        </div>
+                    </div>
+                </template>
+    
+                <template id="common-temp">
+                    <div class="relative data-temp cursor-pointer hover:scale-[1.02] transition-all duration-500 hover:rotate-[1deg] ease">
+                        <div class="w-full max-w-[350px] rounded-lg overflow-hidden relative">
+                            <div class=" w-fit text-white absolute z-[10] top-[23px] right-[35px] cursor-pointer my-bookmark">
+                                <i class="fa-regular absolute fa-bookmark fa-xl"></i>
+                                <i class="fa-solid absolute fa-xl"></i>
+                            </div>
+                            <img class="w-full object-cover info-img" src="" alt="">
+                        </div>
+                        <div class="mt-[0.6rem]">
+                            <div class="text-white flex items-center">
+                                <span class="info-yr"></span>
+                                <div class="flex gap[1px] justify-center items-center">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="2" fill="#d9d9d9"></circle> </g></svg>
+                                    <i class="base-icon fa-solid hover:text-red-500 mr-[8px] transition-all duration-500 ease"></i>
+                                    <span class="info-name"></span>
+                                </div>
+                            </div>
+                            <h1 class="capitalize text-white text-[1.1rem] mt-[0.5rem] info-title"></h1>
+                        </div>
+                    </div>
+                </template>
+    
+                <template id="all-data-temp">
+                    <div class="relative data-temp">
+                        <div class="w-full max-w-[500px] h-[calc(100%-68px)] flex justify-center items-center rounded-lg overflow-hidden relative">
+                            <div class=" w-fit text-white absolute z-[10] top-[25px] right-[30px] cursor-pointer my-bookmark">
+                                <i class="fa-regular absolute fa-bookmark fa-xl"></i>
+                                <i class="fa-solid absolute fa-xl"></i>
+                            </div>
+                            <img class="w-full h-full object-cover info-img" src="" alt="">
+                        </div>
+                        <div class="mt-[0.6rem]">
+                            <div class="text-white flex items-center">
+                                <span class="info-yr"></span>
+                                <div class="flex gap[1px] justify-center items-center">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="2" fill="#d9d9d9"></circle> </g></svg>
+                                    <i class="fa-solid base-icon hover:text-red-500 mr-[4px] transition-all duration-500 ease"></i>
+                                    <span class="info-name"></span>
+                                </div>
+                            </div>
+                            <h1 class="capitalize text-white text-[1.2rem] mt-[0.5rem] info-title"></h1>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>

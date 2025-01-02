@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="icon" href="/assets/images/logo (2).ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script type="module" src="commonSearch.js"></script>
+    <script type="module" src="moviesSearch.js"></script>
+</head>
+<body>
+    <div class="bg-[#10141e] w-full min-h-[100vh] font-baseFont pb-[4rem]">
+        <div class="grid grid-cols-1 md:grid-cols-[80px_auto] md:gap-[2rem] relative md:px-[1.5rem]">
+            <!-- sidebar -->
+            <div class="md:h-[530px] md:pt-[2rem] md:sticky top-0">
+                <div class="w-full h-full bg-[#212b46] md:rounded-xl flex px-[1rem] md:px-0 md:flex-col justify-between items-center py-[2rem]">
+                    <div class="cursor-pointer home max-sm1:text-[0.8rem]">
+                        <i class="fa-solid fa-tape fa-2xl text-red-500"></i>
+                    </div>
+                    
+                    <div class="md:h-[250px] max-sm2:px-[1.3rem] px-[2rem] max-w-[500px] w-full flex flex-row md:flex-col justify-between items-center">
+                        <div class="cursor-pointer main-home">
+                            <i class="fa-solid fa-house-chimney fa-lg text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                        <div class="cursor-pointer movie-category">
+                            <i class="fa-solid fa-film fa-lg text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                        <div class="cursor-pointer tv-category">
+                            <i class="fa-solid fa-tv fa-lg text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                        <div class="cursor-pointer person-category">
+                            <i class="fa-solid fa-person fa-xl text-white hover:text-red-500 transition-all duration-500 ease"></i>
+                        </div>
+                    </div>
+
+                    <div class="cursor-pointer all-bookmarks max-sm1:text-[0.8rem]">
+                        <i class="fa-solid fa-book-bookmark fa-2xl text-red-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-md:px-[1.5rem]">
+                <div class="pt-[4rem] category1">
+                    <!-- movies search -->
+                    <div class="flex max-sm:gap-[13px] gap-[20px] items-center">
+                        <i class="fa-solid fa-magnifying-glass fa-xl text-white"></i>
+                        <input type="text" class="w-full caret-red-400 font-[300] outline-none font-baseFont bg-transparent text-white sm:text-[1.5rem] border-b-[1.5px] border-transparent focus:border-white search-inp" placeholder="Search For Movies">
+                        <button class="capitalize text-white font-medium py-[0.4rem] px-[0.7rem] bg-[#5A6A90] rounded-md search-btn">search</button>
+                    </div>
+    
+                    <!-- movies categories -->
+                    <div class="flex flex-wrap [&>*:nth-child(odd)]:bg-[#0E7490] [&>*:nth-child(even)]:bg-[#171E31] mt-[2rem] gap-[1rem] hidden category-info">
+                        
+                    </div>
+    
+                    <div class="showcase hidden">   
+                        <h1 class="text-[1.8rem] font-[300] text-white mt-[2rem] results-tag"></h1>
+        
+                        <div class="mt-[1rem] grid-cols-[repeat(auto-fit,minmax(270px,1fr))] grid gap-x-[1.1rem] gap-y-[2rem] info-cont max-[620px]:justify-items-center"></div>
+    
+                        <div class="mt-[2.5rem] w-fit mx-auto text-[#10141e] flex items-center gap-[4px]">
+                            <button class="py-[6px] max-sm1:text-[0.6rem] bg-white px-[15px] rounded-l-[10px] prev-page"><i class="fa-xl fa-solid fa-arrow-left"></i></button>
+                            <p class="py-[8px] text-[1.2rem] max-sm1:text-[0.9rem] px-[7px] bg-white rounded-[5px]">Page <span class="curr-page font-semibold">-</span> Out Of <span class="total-pages font-semibold">-</span></p>
+                            <button class="py-[6px] max-sm1:text-[0.6rem] bg-white px-[15px] rounded-r-[10px] next-page"><i class="fa-xl fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+    
+                    <div class="id-info-cont hidden">
+    
+                    </div>
+                </div>
+    
+                <template id="category-temp">
+                    <div class="base-category capitalize text-[1.4rem] text-white grow min-w-[200px] min-h-[200px] flex justify-center items-center rounded-lg p-[2rem] cursor-pointer hover:scale-[1.04] transition-all duration-300 ease"></div>
+                </template>
+    
+                <template id="all-data-temp">
+                    <div class="data-temp relative cursor-pointer hover:scale-[1.02] transition-all duration-500 hover:rotate-[1deg] ease">
+                        <div class="w-full h-[calc(100%-68px)] max-w-[500px] flex justify-center items-center rounded-lg overflow-hidden relative">
+                            <div class=" w-fit text-white absolute z-[10] top-[25px] right-[30px] cursor-pointer my-bookmark">
+                                <i class="fa-regular absolute fa-bookmark fa-xl"></i>
+                                <i class="fa-solid absolute fa-xl"></i>
+                            </div>
+                            <img class="w-full h-full object-cover info-img" src="" alt="">
+                        </div>
+                        <div class="mt-[0.6rem]">
+                            <div class="text-white flex items-center">
+                                <span class="info-yr"></span>
+                                <div class="flex gap[1px] justify-center items-center">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="2" fill="#d9d9d9"></circle> </g></svg>
+                                    <i class="fa-solid base-icon hover:text-red-500 mr-[4px] transition-all duration-500 ease"></i>
+                                    <span class="info-name"></span>
+                                </div>
+                            </div>
+                            <h1 class="capitalize text-white text-[1.2rem] mt-[0.5rem] info-title"></h1>
+                        </div>
+                    </div>
+                </template>
+    
+                <template id="id-info-temp">
+                    <div class="mt-[2rem] relative grid max-lg1:grid-cols-1 grid-cols-[400px_auto] gap-[2.6rem] id-info">
+                        <div class="w-full max-lg1:mx-auto max-lg1:max-w-[500px] overflow-hidden">
+                            <img class="rounded-[15px] poster w-full" src="" alt="">
+                        </div>
+                        <div class="text-white flex flex-col gap-[1.1rem]">
+                            <div>
+                                <h1 class="text-[3rem] font-light base-title leading-[55px]"></h1>
+                                <p class="text-gray-400 font-light text-[1.1rem] tag-line"></p>
+                            </div>
+    
+                            <div class="flex gap-[10px] items-center">
+                                <h1 class="text-[2.4rem] font-semibold main-rating"></h1>
+                                <div>
+                                    <div class="relative inline-block">
+                                        <span>
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                                        </span>
+                                        <span class="overflow-hidden absolute inset-0 inline-block star-rated">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                                        </span>
+                                    </div>
+                                    <div class="relative inline-block">
+                                        <span>
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                                        </span>
+                                        <span class="overflow-hidden absolute inset-0 inline-block star-rated">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                                        </span>
+                                    </div>
+                                    <div class="relative inline-block">
+                                        <span>
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                                        </span>
+                                        <span class="overflow-hidden absolute inset-0 inline-block star-rated">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                                        </span>
+                                    </div>
+                                    <div class="relative inline-block">
+                                        <span>
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                                        </span>
+                                        <span class="overflow-hidden absolute inset-0 inline-block star-rated">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                                        </span>
+                                    </div>
+                                    <div class="relative inline-block">
+                                        <span>
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                                        </span>
+                                        <span class="overflow-hidden absolute inset-0 inline-block star-rated">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="flex flex-wrap gap-x-[2.7rem] gap-y-[1.3rem] w-full">
+                                <div>
+                                    <h2 class="text-gray-400 text-[1.2rem]">Length</h2>
+                                    <p class="length">-</p>
+                                </div>
+                                <div>
+                                    <h2 class="text-gray-400 text-[1.2rem]">Language</h2>
+                                    <p class="language">-</p>
+                                </div>
+                                <div>
+                                    <h2 class="text-gray-400 text-[1.2rem]">Year</h2>
+                                    <p class="year">-</p>
+                                </div>
+                                <div>
+                                    <h2 class="text-gray-400 text-[1.2rem]">Status</h2>
+                                    <p class="status">-</p>
+                                </div>
+                                <div>
+                                    <h2 class="text-gray-400 text-[1.2rem]">Popularity</h2>
+                                    <p class="popularity">-</p>
+                                </div>
+                            </div>
+    
+                            <div class="mt-[0.5rem]">
+                                <h2 class="text-[1.2rem]">Genres</h2>
+                                <div class="flex gap-[10px] flex-wrap mt-[0.5em] all-genres">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="mt-[0.5rem]">
+                                <h2 class="text-[1.2rem]">Trailer/Teaser</h2>
+                                <div class="flex gap-[10px] flex-wrap mt-[0.5em] all-trailers">
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="mt-[0.5rem]">
+                                <h2 class="text-[1.2rem]">Synopsis</h2>
+                                <p class="mt-[0.5rem] font-light syn-info"></p>
+                            </div>
+    
+                            <div class="mt-[0.5rem]">
+                                <h2 class="text-[1.2rem]">Casts</h2>
+                                <div class="flex gap-[10px] flex-wrap mt-[0.5rem] all-cast">
+    
+                                </div>
+                            </div>
+    
+                            <div class="mt-[0.5rem]">
+                                <h2 class="text-[1.2rem]">Production Companies</h2>
+                                <div class="flex gap-[10px] flex-wrap mt-[0.5rem] all-comp">
+    
+                                </div>
+                            </div>
+    
+                            <div class="mt-[2rem] flex gap-[0.4rem]">
+                                <a href="#" class="bg-[#2b3654] px-[2rem] hover:bg-white hover:text-[#10141e] py-[0.7rem] text-[1.1rem] rounded-[10px] data-link">Website <span class="ml-[0.5rem]"><i class="fa-solid fa-link"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
